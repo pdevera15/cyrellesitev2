@@ -4,8 +4,8 @@ import Timeline from "../../components/Timeline"
 
 const Github = ({ props }: { props: string }) => {
   return (
-    <Layout title="Github" subtitle="Github RSS feed">
-      <Timeline />
+    <Layout title="Github" subtitle="My Github feed">
+      {/* <Timeline /> */}
     </Layout>
   )
 }
