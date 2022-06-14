@@ -4,7 +4,6 @@ import styled from "styled-components"
 import Flatcard from "../../components/projects/Flatcard"
 import image1 from "../../public/githubdevfinder.png"
 import Layout from "../../components/layout/Layout"
-import { LayoutGroup, motion } from "framer-motion"
 
 const FlatcardWrapper = styled.div`
   display: flex;
@@ -14,7 +13,6 @@ const FlatcardWrapper = styled.div`
 `
 
 const Projects: NextPage = () => {
-  const [isOpen, setIsOpen] = useState(false)
   return (
     <Layout title="Projects" subtitle="Simple Projects I did.">
       <FlatcardWrapper>

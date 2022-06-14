@@ -16,12 +16,13 @@ const Title = styled.div`
 `
 
 const Subtitle = styled.div`
-  font-size: 1em;
-  font-weight: 300;
+  font-size: 1.17em;
+  font-weight: 200;
   margin-top: 1rem;
   line-height: 1.5em;
   max-width: 24rem;
   text-align: center;
+  color: rgba(255, 255, 255, 0.5);
 `
 const Header = () => {
   return (

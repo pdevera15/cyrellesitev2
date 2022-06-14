@@ -8,13 +8,14 @@ const Wrapper = styled.div`
   gap: 0.5em;
 `
 const Title = styled.div`
-  font-size: 1.17em;
+  font-size: 1.7em;
   color: #fff;
-  font-weight: 700;
+  font-weight: 500;
 `
 const Subtitle = styled.div`
   font-size: 1.17em;
-  font-weight: 400;
+  font-weight: 200;
+  color: rgba(255, 255, 255, 0.5);
 `
 
 const Menu = ({ title, subtitle }: { title: string; subtitle: string }) => {

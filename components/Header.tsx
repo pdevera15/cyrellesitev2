@@ -17,7 +17,7 @@ const Header = () => {
   const { asPath } = useRouter()
   return (
     <Wrapper>
-      <Link href={"/"}>CYRELLE WORKS</Link> <Slash>/</Slash> {asPath.slice(1)}
+      <Link href={"/"}>cyrelle works</Link> <Slash>/</Slash> {asPath.slice(1)}
     </Wrapper>
   )
 }
