@@ -19,7 +19,7 @@ const Subtitle = styled.div`
   font-weight: 300;
   font-size: 1em;
   overflow: hidden;
-  margin-bottom: 1.8rem;
+  margin-bottom: 1rem;
 `
 
 const variants = {
@@ -27,6 +27,7 @@ const variants = {
   enter: { opacity: 1, x: 0, y: 0 },
   exit: { opacity: 0, x: -0, y: 20 },
 }
+
 const Layout = ({
   title,
   subtitle,
@@ -34,7 +35,7 @@ const Layout = ({
 }: {
   title: string
   subtitle: string
-  children: JSX.Element
+  children: JSX.Element | JSX.Element[]
 }) => {
   return (
     <>

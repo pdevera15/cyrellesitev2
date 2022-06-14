@@ -1,32 +1,41 @@
+import React, { Key } from "react"
 import styled from "styled-components"
 
-const Timeline = () => {
+const Timeline = ({ year, events }: { year: string; events: any }) => {
   return (
-    <ViewCotainer>
-      <TimelineRow>
-        <TimelineIconContainer>
-          <TimelineIcon>
-            <Dot />
-          </TimelineIcon>
-        </TimelineIconContainer>
-        <TimelineContent>Published a post on zenn.dev</TimelineContent>
-        <Card>
-          Reactでスクロール配信
-          <DateWrapper>5 Days Ago</DateWrapper>
-        </Card>
-      </TimelineRow>
-      <TimelineRow>
-        <TimelineIconContainer>
-          <TimelineIcon>
-            <Dot />
-          </TimelineIcon>
-        </TimelineIconContainer>
-        <TimelineContent>TEST</TimelineContent>
-      </TimelineRow>
-    </ViewCotainer>
+    <>
+      <YearHeader>{year}</YearHeader>
+      <ViewCotainer>
+        {events.map((data: any, index: Key) => {
+          return (
+            <TimelineRow key={index}>
+              <TimelineIconContainer>
+                <TimelineIcon>
+                  <Dot />
+                </TimelineIcon>
+              </TimelineIconContainer>
+              <TimelineContent>{data?.title}</TimelineContent>
+              {data?.content && (
+                <Card>
+                  {data?.content}
+                  {data?.date && <DateWrapper>{data?.date}</DateWrapper>}
+                </Card>
+              )}
+            </TimelineRow>
+          )
+        })}
+      </ViewCotainer>
+    </>
   )
 }
 
+const YearHeader = styled.div`
+  padding: 20px 10px;
+  font-size: 1.5em;
+  :not(:first-child) {
+    padding-top: 3rem;
+  }
+`
 const ViewCotainer = styled.div`
   margin-top: 1.5rem;
   margin-left: 14px;
