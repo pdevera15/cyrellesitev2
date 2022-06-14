@@ -1,7 +1,7 @@
 import Layout from "../../components/layout/Layout"
 import { GetServerSideProps } from "next/types"
 import { xml2json } from "xml-js"
-import Timeline from "../../components/TimeLine"
+import Timeline from "../../components/Timeline"
 
 const Github = ({ result }: { result: string }) => {
   return (
