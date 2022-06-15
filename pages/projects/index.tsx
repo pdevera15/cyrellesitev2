@@ -1,9 +1,39 @@
-import { useState } from "react"
-import type { NextPage } from "next"
+import type { GetStaticProps, NextPage } from "next"
 import styled from "styled-components"
 import Flatcard from "../../components/projects/Flatcard"
-import image1 from "../../public/githubdevfinder.png"
 import Layout from "../../components/layout/Layout"
+import datas from "../../public/project.json"
+interface IProject {
+  title: string
+  subtitle: string
+  link: string
+  imgsrc?: string
+}
+interface IProjects {
+  projects: IProject[]
+}
+
+const Projects: NextPage<IProjects> = ({ projects }) => {
+  return (
+    <Layout title="Projects" subtitle="Simple Projects I did.">
+      <FlatcardWrapper>
+        {projects.map((project, index) => (
+          <Flatcard
+            key={index}
+            title={project.title}
+            subtitle={project.subtitle}
+            link={project.link}
+            imgsrc={`${process.env.SERVER}/image/${project.imgsrc}`}
+          />
+        ))}
+      </FlatcardWrapper>
+    </Layout>
+  )
+}
+
+export const getStaticProps: GetStaticProps = async () => {
+  return { props: { projects: datas.projects } }
+}
 
 const FlatcardWrapper = styled.div`
   display: flex;
@@ -11,29 +41,4 @@ const FlatcardWrapper = styled.div`
   gap: 2em;
   justify-content: space-between;
 `
-
-const Projects: NextPage = () => {
-  return (
-    <Layout title="Projects" subtitle="Simple Projects I did.">
-      <FlatcardWrapper>
-        <Flatcard
-          subtitle="Github dev finder using GITHUB api with night modenight modenight modenight mode"
-          imgsrc={image1.src}
-          link="samplelink"
-        />
-        <Flatcard
-          subtitle="Github dev finder using GITHUB api with night mode"
-          imgsrc={image1.src}
-          link="samplelink"
-        />
-        <Flatcard
-          subtitle="Github dev finder using GITHUB api with night mode"
-          imgsrc={image1.src}
-          link="samplelink"
-        />
-      </FlatcardWrapper>
-    </Layout>
-  )
-}
-
 export default Projects

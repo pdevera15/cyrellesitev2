@@ -1,0 +1,28 @@
+{
+  "projects": [
+    {
+      "title": "Frontend Challenge (NFT)",
+      "subtitle": "A challenge from frontendmentor.io",
+      "link": "https://cyrelle.dev/portfolio/nft/",
+      "imgsrc": "image1.png"
+    },
+    {
+      "title": "Frontend Challenge (Github Finder)",
+      "subtitle": "A functional search engine of github and featuring light/night mode",
+      "link": "https://cyrelle.dev/portfolio/githubdevfinder/",
+      "imgsrc": "image2.png"
+    },
+    {
+      "title": "Spotify Clone",
+      "subtitle": "Authentication with spotify api and can play music through browser",
+      "link": "https://spotify-clone-jet-two.vercel.app/login",
+      "imgsrc": "image3.png"
+    },
+    {
+      "title": "Javascript Menu",
+      "subtitle": "A simple javascript menu using vanilla JS and HTML",
+      "link": "https://cyrelle.dev/portfolio/burgermenu/",
+      "imgsrc": "image4.png"
+    }
+  ]
+}

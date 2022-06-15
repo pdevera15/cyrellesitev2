@@ -2,28 +2,29 @@
 import styled from "styled-components"
 import Link from "next/link"
 
-const Flatcard = ({
-  imgsrc,
-  subtitle,
-  link,
-}: {
-  imgsrc: string
+interface Info {
+  title: string
+  imgsrc?: string
   subtitle: string
   link: string
-}) => {
+}
+
+const Flatcard = ({ title, imgsrc, subtitle, link }: Info) => {
   return (
     <Wrapper>
-      <>
-        <img
-          style={{ width: "100%", height: "10rem", objectFit: "cover" }}
-          src={imgsrc}
-          alt={imgsrc}
-        />
-        <Content>
-          <h1>Player1</h1>
-          <p>{subtitle}</p>
-        </Content>
-      </>
+      <Link href={link} passHref>
+        <a target="_blank">
+          <img
+            style={{ width: "100%", height: "10rem", objectFit: "cover" }}
+            src={imgsrc}
+            alt={imgsrc}
+          />
+          <Content>
+            <h1>{title}</h1>
+            <p>{subtitle}</p>
+          </Content>
+        </a>
+      </Link>
     </Wrapper>
   )
 }

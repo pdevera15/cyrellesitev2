@@ -4,6 +4,15 @@ const nextConfig = {
   compiler: {
     styledComponents: true,
   },
+  serverRuntimeConfig: {
+    PROJECT_ROOT: __dirname,
+  },
+  env: {
+    SERVER:
+      process.env.NODE_ENV === "development"
+        ? "http://localhost:3000"
+        : "http://cyrellesitev2.vercel.app",
+  },
 }
 
 module.exports = nextConfig
