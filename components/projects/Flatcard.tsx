@@ -17,7 +17,7 @@ const Flatcard = ({ title, imgsrc, subtitle, link }: Info) => {
           <img
             style={{ width: "100%", height: "10rem", objectFit: "cover" }}
             src={imgsrc}
-            alt={imgsrc}
+            alt={title}
           />
           <Content>
             <h1>{title}</h1>
@@ -47,6 +47,7 @@ const Content = styled.div`
   background-color: rgba(255, 255, 255, 0);
   padding: 0 1.1rem;
   font-size: 1.3em;
+  line-height: 28px;
   h1 {
     background-color: rgba(255, 255, 255, 0);
     font-size: 1.17em;

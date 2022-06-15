@@ -1,14 +1,9 @@
 import styled from "styled-components"
 
 const Wrapper = styled.div`
-  padding-bottom: 2.5rem;
-`
-
-const Foot = styled.div`
-  position: absolute;
-  bottom: 0;
+  max-width: 780px;
   width: 100%;
-  height: 5rem;
+  padding: 3em 0 1.5em;
   text-align: center;
 `
 const Footer = () => {
@@ -17,11 +12,7 @@ const Footer = () => {
     return d.getFullYear()
   }
 
-  return (
-    <Wrapper>
-      <Foot>© Cyrelle {getYear()}</Foot>
-    </Wrapper>
-  )
+  return <Wrapper>© Cyrelle {getYear()}</Wrapper>
 }
 
 export default Footer

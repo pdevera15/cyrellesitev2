@@ -4,12 +4,17 @@ import { Normalize } from "styled-normalize"
 import GlobalStyle from "../styles/GlobalStyle"
 import styled from "styled-components"
 import Head from "next/head"
+
 const Wrapper = styled.div`
   max-width: 780px;
   margin: auto;
   padding: 0px 1.5rem;
-  position: relative;
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
+`
+const Content = styled.div`
+  flex-grow: 1;
 `
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -20,7 +25,9 @@ function MyApp({ Component, pageProps }: AppProps) {
       </Head>
       <Normalize />
       <GlobalStyle />
-      <Component {...pageProps} />
+      <Content>
+        <Component {...pageProps} />
+      </Content>
       <Footer />
     </Wrapper>
   )

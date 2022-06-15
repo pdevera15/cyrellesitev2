@@ -1,6 +1,5 @@
 import styled from "styled-components"
 import Header from "../../components/Header"
-import Footer from "../../components/Footer"
 import { motion } from "framer-motion"
 
 const Wrapper = styled.div`
@@ -53,7 +52,6 @@ const Layout = ({
         >
           {children}
         </motion.article>
-        <Footer />
       </Wrapper>
     </>
   )
