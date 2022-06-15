@@ -30,7 +30,7 @@ const Home: NextPage = () => {
       >
         <Menu
           title="Projects"
-          subtitle="Simple of projects i worked this virus-era"
+          subtitle="Simple projects I worked this virus-years"
         />
         <Menu title="Bio" subtitle="All about me" />
         <Menu title="Blog" subtitle="About anything!" />

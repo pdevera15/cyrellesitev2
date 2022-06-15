@@ -10,7 +10,6 @@ const Wrapper = styled.div`
 const Title = styled.div`
   font-size: 1.7em;
   color: #fff;
-  font-weight: 500;
 `
 const Subtitle = styled.div`
   font-size: 1.17em;

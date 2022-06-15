@@ -29,8 +29,8 @@ const Header = () => {
     <Wrapper>
       <Title>CYRELLE WORKS</Title>
       <Subtitle>
-        My personal page, an aspiring software developer based in Tokyo, Japan
-        🇯🇵
+        My personal page, a software developer made in Philippines 🇵🇭 based in
+        Tokyo, Japan 🇯🇵
       </Subtitle>
     </Wrapper>
   )
