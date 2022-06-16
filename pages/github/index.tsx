@@ -1,10 +1,7 @@
 import Layout from "../../src/components/layout/Layout"
 import { GetStaticProps } from "next/types"
-import { decode } from "html-entities"
-import { XMLParser } from "fast-xml-parser"
 import { parse } from "rss-to-json"
 import { Github as IGithub } from "../../src/interfaces/Github"
-import { useEffect } from "react"
 import GithubTimeline from "../../src/components/GithubTimeline"
 
 const Github = ({ data }: { data: IGithub }) => {
