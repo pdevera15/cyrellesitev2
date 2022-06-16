@@ -1,7 +1,7 @@
 import type { GetStaticProps, NextPage } from "next"
 import styled from "styled-components"
-import Flatcard from "../../components/projects/Flatcard"
-import Layout from "../../components/layout/Layout"
+import Flatcard from "../../src/components/projects/Flatcard"
+import Layout from "../../src/components/layout/Layout"
 import datas from "../../public/project.json"
 interface IProject {
   title: string

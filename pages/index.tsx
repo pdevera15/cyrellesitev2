@@ -1,7 +1,7 @@
 import type { NextPage } from "next"
-import Hero from "../components/Hero"
+import Hero from "../src/components/Hero"
 import styled from "styled-components"
-import Menu from "../components/Menu"
+import Menu from "../src/components/Menu"
 import { motion } from "framer-motion"
 
 const Divider = styled.div`

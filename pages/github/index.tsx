@@ -1,21 +1,27 @@
-import Layout from "../../components/layout/Layout"
-import { GetServerSideProps } from "next/types"
-import Timeline from "../../components/Timeline"
+import Layout from "../../src/components/layout/Layout"
+import { GetStaticProps } from "next/types"
+import { decode } from "html-entities"
+import { XMLParser } from "fast-xml-parser"
+import { parse } from "rss-to-json"
+import { Github as IGithub } from "../../src/interfaces/Github"
+import { useEffect } from "react"
+import GithubTimeline from "../../src/components/GithubTimeline"
 
-const Github = ({ props }: { props: string }) => {
+const Github = ({ data }: { data: IGithub }) => {
+  // console.log(data.title)
   return (
-    <Layout title="Github" subtitle="My Github feed">
-      {/* <Timeline /> */}
+    <Layout title="My github timeline" subtitle={data.title}>
+      {data.items.map((x, index) => (
+        <GithubTimeline key={index} events={x} />
+      ))}
     </Layout>
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
-  // const res: Response = await fetch("https://github.com/pdevera15.atom")
-  // const body = await res.text()
-  // const result = xml2json(body)
+export const getStaticProps: GetStaticProps = async (ctx) => {
+  const res = await parse("https://github.com/pdevera15.atom", {})
   return {
-    props: {},
+    props: { data: JSON.parse(JSON.stringify(res)) },
   }
 }
 

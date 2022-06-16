@@ -272,6 +272,13 @@
     "@types/react" "*"
     "hoist-non-react-statics" "^3.3.0"
 
+"@types/html-entities@^1.3.4":
+  "integrity" "sha512-Ut62LV90H9tgXwyhmfR8U6yCw/6xeo26IlsbAJJfqPomaqDN2zoLb2Z+cbmy5AycJFhwNJDdH0zqjQp7Ox/eXg=="
+  "resolved" "https://registry.npmjs.org/@types/html-entities/-/html-entities-1.3.4.tgz"
+  "version" "1.3.4"
+  dependencies:
+    "html-entities" "*"
+
 "@types/json5@^0.0.29":
   "integrity" "sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ=="
   "resolved" "https://registry.npmjs.org/@types/json5/-/json5-0.0.29.tgz"
@@ -458,6 +465,13 @@
   "integrity" "sha512-LVAaGp/wkkgYJcjmHsoKx4juT1aQvJyPcW09MLCjVTh3V2cc6PnyempiLMNH5iMdfIX/zdbjUx2KDjMLCTdPeA=="
   "resolved" "https://registry.npmjs.org/axe-core/-/axe-core-4.4.2.tgz"
   "version" "4.4.2"
+
+"axios@^0.21.1":
+  "integrity" "sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg=="
+  "resolved" "https://registry.npmjs.org/axios/-/axios-0.21.4.tgz"
+  "version" "0.21.4"
+  dependencies:
+    "follow-redirects" "^1.14.0"
 
 "axobject-query@^2.2.0":
   "integrity" "sha512-Td525n+iPOOyUQIeBfcASuG6uJsDOITl7Mds5gFyerkWiX7qhUTdYUBlSgNMyVqtSJqwpt1kXGLdUt6SykLMRA=="
@@ -951,6 +965,20 @@
   "resolved" "https://registry.npmjs.org/fast-levenshtein/-/fast-levenshtein-2.0.6.tgz"
   "version" "2.0.6"
 
+"fast-xml-parser@^3.19.0":
+  "integrity" "sha512-FTFVjYoBOZTJekiUsawGsSYV9QL0A+zDYCRj7y34IO6Jg+2IMYEtQa+bbictpdpV8dHxXywqU7C0gRDEOFtBFg=="
+  "resolved" "https://registry.npmjs.org/fast-xml-parser/-/fast-xml-parser-3.21.1.tgz"
+  "version" "3.21.1"
+  dependencies:
+    "strnum" "^1.0.4"
+
+"fast-xml-parser@^4.0.8":
+  "integrity" "sha512-N4XqZaRMuHMvOFwFlqeBTlvrnXU+QN8wvCl2g9fHzMx2BnLoIYRDwy6XwI8FxogHMFI9OfGQBCddgckvSLTnvg=="
+  "resolved" "https://registry.npmjs.org/fast-xml-parser/-/fast-xml-parser-4.0.8.tgz"
+  "version" "4.0.8"
+  dependencies:
+    "strnum" "^1.0.5"
+
 "fastq@^1.6.0":
   "integrity" "sha512-YpkpUnK8od0o1hmeSc7UUs/eB/vIPWJYjKck2QKIzAf71Vm1AAQ3EbuZB3g2JIy+pg+ERD0vqI79KyZiB2e2Nw=="
   "resolved" "https://registry.npmjs.org/fastq/-/fastq-1.13.0.tgz"
@@ -991,6 +1019,11 @@
   "integrity" "sha512-WIWGi2L3DyTUvUrwRKgGi9TwxQMUEqPOPQBVi71R96jZXJdFskXEmf54BoZaS1kknGODoIGASGEzBUYdyMCBJg=="
   "resolved" "https://registry.npmjs.org/flatted/-/flatted-3.2.5.tgz"
   "version" "3.2.5"
+
+"follow-redirects@^1.14.0":
+  "integrity" "sha512-yLAMQs+k0b2m7cVxpS1VKJVvoz7SS9Td1zss3XRwXj+ZDH00RJgnuLx7E44wx02kQLrdM3aOOy+FpzS7+8OizA=="
+  "resolved" "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.15.1.tgz"
+  "version" "1.15.1"
 
 "framer-motion@^6.3.11":
   "integrity" "sha512-xQLk+ZSklNs5QNCUmdWPpKMOuWiB8ZETsvcIOWw8xvri9K3TamuifgCI/B6XpaEDR0/V2ZQF2Wm+gUAZrXo+rw=="
@@ -1173,6 +1206,11 @@
   "version" "3.3.2"
   dependencies:
     "react-is" "^16.7.0"
+
+"html-entities@*":
+  "integrity" "sha512-DV5Ln36z34NNTDgnz0EWGBLZENelNAtkiFA4kyNOG2tDI6Mz1uSWiq1wAKdyjnJwyDiDO7Fa2SO1CTxPXL8VxA=="
+  "resolved" "https://registry.npmjs.org/html-entities/-/html-entities-2.3.3.tgz"
+  "version" "2.3.3"
 
 "ignore@^5.2.0":
   "integrity" "sha512-CmxgYGiEPCLhfLnpPp1MoRmifwEIOgjcHXxOBjv7mY96c+eWScsOP9c112ZyLdWHi0FxHjI+4uVhKYp/gcdRmQ=="
@@ -1751,6 +1789,14 @@
   dependencies:
     "glob" "^7.1.3"
 
+"rss-to-json@^2.0.2":
+  "integrity" "sha512-tthD3OKROZWSC11AGJ/Qs8bjbHbnjkwC4n3EQSdvLJE3lf/b4AKEyg/ayyjv+1f+O/KF6oEmufEvyJFN0q622w=="
+  "resolved" "https://registry.npmjs.org/rss-to-json/-/rss-to-json-2.0.2.tgz"
+  "version" "2.0.2"
+  dependencies:
+    "axios" "^0.21.1"
+    "fast-xml-parser" "^3.19.0"
+
 "run-parallel@^1.1.9":
   "integrity" "sha512-5l4VyZR86LZ/lDxZTR6jqL8AFE2S0IFLMP26AbjsLVADxHdhB/c0GUsH+y39UfCi3dzz8OlQuPmnaJOMoDHQBA=="
   "resolved" "https://registry.npmjs.org/run-parallel/-/run-parallel-1.2.0.tgz"
@@ -1861,6 +1907,11 @@
   "integrity" "sha512-6fPc+R4ihwqP6N/aIv2f1gMH8lOVtWQHoqC4yK6oSDVVocumAsfCqjkXnqiYMhmMwS/mEHLp7Vehlt3ql6lEig=="
   "resolved" "https://registry.npmjs.org/strip-json-comments/-/strip-json-comments-3.1.1.tgz"
   "version" "3.1.1"
+
+"strnum@^1.0.4", "strnum@^1.0.5":
+  "integrity" "sha512-J8bbNyKKXl5qYcR36TIO8W3mVGVHrmmxsd5PAItGkmyzwJvybiw2IVq5nqd0i4LSNSkB/sx9VHllbfFdr9k1JA=="
+  "resolved" "https://registry.npmjs.org/strnum/-/strnum-1.0.5.tgz"
+  "version" "1.0.5"
 
 "style-value-types@5.0.0":
   "integrity" "sha512-08yq36Ikn4kx4YU6RD7jWEv27v4V+PUsOGa4n/as8Et3CuODMJQ00ENeAVXAeydX4Z2j1XHZF1K2sX4mGl18fA=="

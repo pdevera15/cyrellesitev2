@@ -1,5 +1,5 @@
 import type { AppProps } from "next/app"
-import Footer from "../components/Footer"
+import Footer from "../src/components/Footer"
 import { Normalize } from "styled-normalize"
 import GlobalStyle from "../styles/GlobalStyle"
 import styled from "styled-components"

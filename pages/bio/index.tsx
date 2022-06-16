@@ -1,6 +1,6 @@
 import styled from "styled-components"
-import Timeline from "../../components/Timeline"
-import Layout from "../../components/layout/Layout"
+import Timeline from "../../src/components/Timeline"
+import Layout from "../../src/components/layout/Layout"
 
 const datas = [
   {

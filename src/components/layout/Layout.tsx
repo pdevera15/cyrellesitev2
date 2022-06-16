@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import Header from "../../components/Header"
+import Header from "../Header"
 import { motion } from "framer-motion"
 
 const Wrapper = styled.div`
