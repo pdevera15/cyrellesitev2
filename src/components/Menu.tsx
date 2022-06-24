@@ -17,12 +17,42 @@ const Subtitle = styled.div`
   color: rgba(255, 255, 255, 0.5);
 `
 
-const Menu = ({ title, subtitle }: { title: string; subtitle: string }) => {
+const Menu = ({
+  title,
+  subtitle,
+  active = true,
+  formail = false,
+}: {
+  title: string
+  subtitle: string
+  active?: boolean
+  formail?: boolean
+}) => {
+  const Titlemod = () => {
+    if (!active) {
+      return (
+        <div style={{ display: "flex", flex: "start" }}>
+          {title}
+          {<div style={{ fontSize: ".5em" }}>UnderConstruction</div>}
+        </div>
+      )
+    } else {
+      return (
+        <Link
+          href={
+            !formail
+              ? `/${title.toLowerCase().replace(/\s+/g, "")}`
+              : `mailto:cy4work@proton.me`
+          }
+        >
+          {title}
+        </Link>
+      )
+    }
+  }
   return (
     <Wrapper>
-      <Title>
-        <Link href={`/${title.toLowerCase()}`}>{title}</Link>
-      </Title>
+      <Title>{Titlemod()}</Title>
       <Subtitle>{subtitle}</Subtitle>
     </Wrapper>
   )

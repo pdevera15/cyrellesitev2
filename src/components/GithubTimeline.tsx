@@ -29,7 +29,11 @@ const GithubTimeline = ({ year, events }: { year?: string; events: any }) => {
           {events.content && (
             <Card>
               {decode(events.content)}
-              {events.author && <DateWrapper>{events.published}</DateWrapper>}
+              {events.author && (
+                <DateWrapper>
+                  {new Date(events.published).toLocaleString("jp-JP")}
+                </DateWrapper>
+              )}
             </Card>
           )}
         </TimelineRow>

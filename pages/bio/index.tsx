@@ -4,82 +4,13 @@ import Layout from "../../src/components/layout/Layout"
 
 const datas = [
   {
-    year: "2012",
-    events: [
-      {
-        date: "2022/04",
-        title: "Enter High School",
-        content: "at Bilogo Batangas City",
-      },
-      {
-        date: "2022/01",
-        title: "Happy New Year!",
-        content: "New year new you?",
-        icon: "🔥",
-      },
-    ],
-  },
-  {
-    year: "2013",
-    events: [
-      {
-        date: "2022/04",
-        title: "Started working in BizForex & BizHawkEye",
-        content: "Projects of NTTDATA",
-      },
-      {
-        date: "2022/01",
-        title: "Happy New Year!",
-        content: "New year new you?",
-        icon: "🔥",
-      },
-    ],
-  },
-  {
-    year: "2014",
-    events: [
-      {
-        date: "2022/04",
-        title: "Started working in BizForex & BizHawkEye",
-        content: "Projects of NTTDATA",
-      },
-      {
-        date: "2022/01",
-        title: "Happy New Year!",
-        content: "New year new you?",
-        icon: "🔥",
-      },
-    ],
-  },
-  {
-    year: "2015",
-    events: [
-      {
-        date: "2022/04",
-        title: "Started working in BizForex & BizHawkEye",
-        content: "Projects of NTTDATA",
-      },
-      {
-        date: "2022/01",
-        title: "Happy New Year!",
-        content: "New year new you?",
-        icon: "🔥",
-      },
-    ],
-  },
-  {
     year: "2016",
     events: [
       {
-        date: "2022/04",
-        title: "Started working in BizForex & BizHawkEye",
-        content: "Projects of NTTDATA",
-      },
-      {
-        date: "2022/01",
-        title: "Happy New Year!",
-        content: "New year new you?",
-        icon: "🔥",
+        date: "2016/06",
+        title: "Graduated College",
+        content:
+          "Getting out at college was fun, thinking that after several years of working I may have my own house, car, and family. But not that how world works on me. lol",
       },
     ],
   },
@@ -87,30 +18,34 @@ const datas = [
     year: "2017",
     events: [
       {
-        date: "2022/04",
-        title: "Started working in BizForex & BizHawkEye",
-        content: "Projects of NTTDATA",
-      },
-      {
-        date: "2022/01",
-        title: "Happy New Year!",
-        content: "New year new you?",
-        icon: "🔥",
+        date: "2017/04",
+        title: "First time in Japan 🇯🇵",
+        content:
+          "I went in Japan to study Japanese language and really dont know what future holds in me.",
       },
     ],
   },
   {
-    year: "2021",
+    year: "2018",
     events: [
       {
-        date: "2022/04",
-        title: "Started working in BizForex & BizHawkEye",
-        content: "Projects of NTTDATA",
+        date: "2018/04",
+        title: "Got my FIRST JOB!",
+        content:
+          "After 1 year of studying Japanese Language while doing part time job at the same, I finally got my first job as an IT! who knows that I can be an IT in Japan!",
       },
       {
-        date: "2022/01",
-        title: "Happy New Year!",
-        content: "New year new you?",
+        date: "2018/07",
+        title: "Working on my first project",
+        content:
+          "After 3 months of training of basic coding and business manner, I participated in my first Project. Luckily, most of my task is coding, the programming language we used is JAVA",
+        icon: "🔥",
+      },
+      {
+        date: "2018/12",
+        title: "Working on my second project",
+        content:
+          "After 4 months of java programming, my next adventure is PL/SQL. Where it helps me to streghten my knowledge on database side.",
         icon: "🔥",
       },
     ],

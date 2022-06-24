@@ -5,7 +5,6 @@ import { Github as IGithub } from "../../src/interfaces/Github"
 import GithubTimeline from "../../src/components/GithubTimeline"
 
 const Github = ({ data }: { data: IGithub }) => {
-  // console.log(data.title)
   return (
     <Layout title="My github timeline" subtitle={data.title}>
       {data.items.map((x, index) => (

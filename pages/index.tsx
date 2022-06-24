@@ -34,7 +34,12 @@ const Home: NextPage = () => {
         />
         <Menu title="Bio" subtitle="All about me" />
         <Menu title="Blog" subtitle="About anything!" />
-        <Menu title="Github" subtitle="My github stories" />
+        <Menu title="Github" subtitle="My github stories" active={false} />
+        <Menu
+          title="Email me"
+          subtitle="Contact me directly thru email"
+          formail={true}
+        />
       </motion.article>
     </>
   )
