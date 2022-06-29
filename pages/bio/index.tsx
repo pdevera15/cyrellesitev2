@@ -38,7 +38,7 @@ const datas = [
         date: "2018/07",
         title: "Working on my first project",
         content:
-          "After 3 months of training of basic coding and business manner, I participated in my first Project. Luckily, most of my task is coding, the programming language we used is JAVA",
+          "After 3months of training of basic coding and business manner, I participated in my first Project. Luckily, most of my task is coding, the programming language we used is JAVA",
         icon: "🔥",
       },
       {

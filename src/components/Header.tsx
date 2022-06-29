@@ -15,9 +15,13 @@ const Slash = styled.div`
 
 const Header = () => {
   const { asPath } = useRouter()
+  const path = asPath.slice(1).split("/")
   return (
     <Wrapper>
-      <Link href={"/"}>cyrelle works</Link> <Slash>/</Slash> {asPath.slice(1)}
+      <>
+        <Link href={"/"}>cyrelle works</Link> <Slash>/</Slash>
+        {path[0]}
+      </>
     </Wrapper>
   )
 }

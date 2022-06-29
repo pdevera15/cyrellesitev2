@@ -32,9 +32,9 @@ const Layout = ({
   subtitle,
   children,
 }: {
-  title: string
-  subtitle: string
-  children: JSX.Element | JSX.Element[]
+  title?: string
+  subtitle?: string
+  children?: JSX.Element | JSX.Element[]
 }) => {
   return (
     <>
