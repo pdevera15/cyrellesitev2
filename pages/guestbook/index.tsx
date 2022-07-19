@@ -1,3 +1,4 @@
+import { useRef } from "react"
 import Layout from "../../src/components/layout/Layout"
 import { GetStaticProps, NextPage } from "next"
 import { useSession, signIn } from "next-auth/react"
@@ -55,7 +56,6 @@ const InputMessage = styled.input.attrs({ type: "text" })`
     outline: none;
   }
 `
-
 const SubmitMessage = styled.input.attrs({ type: "submit" })`
   height: 2em;
   border: none;
@@ -64,6 +64,20 @@ const SubmitMessage = styled.input.attrs({ type: "submit" })`
 `
 
 const GuestBookPage: NextPage = ({ fallbackdata }: any) => {
+  const inputEl = useRef<null | HTMLInputElement>(null)
+  const submitEntry = async (event: HTMLInputElement) => {
+    event.preventDefault
+    const res = await fetch("/api/guesbook", {
+      body: JSON.stringify({ body: inputEl?.current?.value }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+    })
+
+    const { error } = res.json()
+    console.log(error)
+  }
   const { data, status } = useSession()
   console.log(data, status, fallbackdata)
   return (
@@ -86,8 +100,14 @@ const GuestBookPage: NextPage = ({ fallbackdata }: any) => {
             Your information is only used to display your name
           </Subtitle>
           <InputWrapper>
-            <InputMessage placeholder="Test Message..." type="text" />
-            <SubmitMessage type="submit" />
+            <form onSubmit={(e) => submitEntry(e)}>
+              <InputMessage
+                ref={inputEl}
+                placeholder="Test Message..."
+                type="text"
+              />
+              <SubmitMessage type="submit" />
+            </form>
           </InputWrapper>
         </GuestbookWrapper>
       )}
