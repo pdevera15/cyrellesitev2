@@ -39,6 +39,29 @@ const Subtitle = styled.p`
   padding: 0;
   margin: 0;
 `
+const InputWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  border-radius: 10px;
+`
+const InputMessage = styled.input.attrs({ type: "text" })`
+  flex-grow: 2;
+  border: none;
+  border-radius: 10px;
+  height: 2em;
+  padding-left: 10px;
+  &:focus {
+    outline: none;
+  }
+`
+
+const SubmitMessage = styled.input.attrs({ type: "submit" })`
+  height: 2em;
+  border: none;
+  padding: 0 12px;
+  border-radius: 10px;
+`
 
 const GuestBookPage: NextPage = ({ fallbackdata }: any) => {
   const { data, status } = useSession()
@@ -57,7 +80,16 @@ const GuestBookPage: NextPage = ({ fallbackdata }: any) => {
           </Subtitle>
         </GuestbookWrapper>
       ) : (
-        <></>
+        <GuestbookWrapper>
+          <Head>Share a message to my future visitor.</Head>
+          <Subtitle>
+            Your information is only used to display your name
+          </Subtitle>
+          <InputWrapper>
+            <InputMessage placeholder="Test Message..." type="text" />
+            <SubmitMessage type="submit" />
+          </InputWrapper>
+        </GuestbookWrapper>
       )}
 
       <GuestBook entries={fallbackdata}></GuestBook>
@@ -66,7 +98,7 @@ const GuestBookPage: NextPage = ({ fallbackdata }: any) => {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const entries = await prisma?.guestbook.findMany({
+  const entries = await prisma.guestbook.findMany({
     orderBy: {
       updated_at: "desc",
     },
