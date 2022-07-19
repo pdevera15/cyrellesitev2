@@ -2,22 +2,42 @@ import Layout from "../../src/components/layout/Layout"
 import { GetStaticProps, NextPage } from "next"
 import { useSession, signIn } from "next-auth/react"
 import styled from "styled-components"
+import GuestBook from "../../src/components/GuestBook"
+import prisma from "../../lib/prisma"
 
 const GuestbookWrapper = styled.div`
-  background-color: #424242;
-  max-width: 480px;
+  background-color: rgba(255, 255, 255, 0.1);
   margin: auto;
   border-radius: 10px;
   padding: 1em;
   line-height: 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  gap: 1em;
 `
 
 const Button = styled.button`
-  background-color: #131418;
+  background-color: #df34c2;
   border: 0;
   padding: 0.5em 1em;
   border-radius: 10px;
   cursor: pointer;
+  color: #fff;
+`
+
+const Head = styled.p`
+  background-color: transparent;
+  padding: 0;
+  margin: 0;
+  font-weight: bolder;
+  font-size: 1.5em;
+`
+
+const Subtitle = styled.p`
+  background-color: transparent;
+  padding: 0;
+  margin: 0;
 `
 
 const GuestBookPage: NextPage = ({ fallbackdata }: any) => {
@@ -30,22 +50,17 @@ const GuestBookPage: NextPage = ({ fallbackdata }: any) => {
     >
       {status !== "authenticated" ? (
         <GuestbookWrapper>
-          Sign in using Github <br />
-          <Button
-            onClick={() =>
-              signIn("github", {
-                callbackUrl: "http://localhost:3000/guestbook",
-              })
-            }
-          >
-            Sign in
-          </Button>
-          <br />
-          Your information is only used to display your name
+          <Head>Sign in using Github </Head>
+          <Button onClick={() => signIn("github")}>Sign in</Button>
+          <Subtitle>
+            Your information is only used to display your name
+          </Subtitle>
         </GuestbookWrapper>
       ) : (
-        <div></div>
+        <></>
       )}
+
+      <GuestBook entries={fallbackdata}></GuestBook>
     </Layout>
   )
 }
