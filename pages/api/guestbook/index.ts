@@ -1,6 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next"
 import { getSession } from "next-auth/react"
-
 import prisma from "../../../lib/prisma"
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
@@ -20,13 +19,13 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 
   const session = await getSession({ req })
-  const { email, name } = session?.user
-
   if (!session) {
     return res.status(403).send("Unauthorized Request")
   }
+  const { email, name } = session?.user
 
   if (req.method === "POST") {
+    console.log("POST")
     const newEntry = await prisma.guestbook.create({
       data: {
         email,
