@@ -113,13 +113,15 @@ const GuestBookPage: NextPage = ({ fallbackdata }: any) => {
             Your information is only used to display your name
           </Subtitle>
           <InputWrapper>
-            <form onClick={(event: React.MouseEvent) => submitEntry(event)}>
+            <form onSubmit={(event: React.MouseEvent) => submitEntry(event)}>
               <InputMessage
                 ref={inputEl}
                 placeholder="Test Message..."
                 type="text"
               />
-              <SubmitMessage>
+              <SubmitMessage
+                disabled={form.state === Form.LOADING ? true : false}
+              >
                 {form.state === Form.LOADING ? "Spinner" : "Submit"}
               </SubmitMessage>
             </form>
