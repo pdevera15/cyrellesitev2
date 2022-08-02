@@ -1,10 +1,11 @@
-import React, { useRef } from "react"
+import React, { useRef, useState } from "react"
 import Layout from "../../src/components/layout/Layout"
 import { GetStaticProps, NextPage } from "next"
 import { useSession, signIn } from "next-auth/react"
 import styled from "styled-components"
 import GuestBook from "../../src/components/GuestBook"
 import prisma from "../../lib/prisma"
+import { FormState, Form } from "../../src/lib/types"
 
 const GuestbookWrapper = styled.div`
   background-color: rgba(255, 255, 255, 0.1);
@@ -56,7 +57,7 @@ const InputMessage = styled.input.attrs({ type: "text" })`
     outline: none;
   }
 `
-const SubmitMessage = styled.input.attrs({ type: "submit" })`
+const SubmitMessage = styled.button`
   height: 2em;
   border: none;
   padding: 0 12px;
@@ -65,9 +66,11 @@ const SubmitMessage = styled.input.attrs({ type: "submit" })`
 
 const GuestBookPage: NextPage = ({ fallbackdata }: any) => {
   const inputEl = useRef<null | HTMLInputElement>(null)
+  const [form, setForm] = useState<FormState>({ state: Form.INITIAL })
 
   const submitEntry = async (event: React.MouseEvent) => {
     event.preventDefault()
+    setForm({ state: Form.LOADING })
     const res = await fetch("/api/guestbook", {
       body: JSON.stringify({ body: inputEl?.current?.value }),
       headers: {
@@ -75,6 +78,15 @@ const GuestBookPage: NextPage = ({ fallbackdata }: any) => {
       },
       method: "POST",
     })
+
+    const { error } = await res.json()
+    if (error) {
+      setForm({ state: Form.ERROR, message: error })
+      return
+    }
+
+    inputEl.current.value = ""
+    setForm({ state: Form.SUCCESS })
   }
   const { data, status } = useSession()
   console.log(data, status, fallbackdata)
@@ -104,7 +116,9 @@ const GuestBookPage: NextPage = ({ fallbackdata }: any) => {
                 placeholder="Test Message..."
                 type="text"
               />
-              <SubmitMessage type="submit" />
+              <SubmitMessage type="submit">
+                {form.state === Form.LOADING ? "Spinner" : "Submit"}
+              </SubmitMessage>
             </form>
           </InputWrapper>
         </GuestbookWrapper>
