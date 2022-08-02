@@ -86,7 +86,10 @@ const GuestBookPage: NextPage = ({ fallbackdata }: any) => {
     }
 
     inputEl.current.value = ""
-    setForm({ state: Form.SUCCESS })
+    setForm({
+      state: Form.SUCCESS,
+      message: "Thank you for signing my guestbook!",
+    })
   }
   const { data, status } = useSession()
   console.log(data, status, fallbackdata)
@@ -116,7 +119,7 @@ const GuestBookPage: NextPage = ({ fallbackdata }: any) => {
                 placeholder="Test Message..."
                 type="text"
               />
-              <SubmitMessage type="submit">
+              <SubmitMessage>
                 {form.state === Form.LOADING ? "Spinner" : "Submit"}
               </SubmitMessage>
             </form>
