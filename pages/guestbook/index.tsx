@@ -7,6 +7,7 @@ import GuestBook from "../../src/components/GuestBook"
 import prisma from "../../lib/prisma"
 import { FormState, Form } from "../../src/lib/types"
 import { useSWRConfig as useSWR } from "swr"
+import Spinner from "../../src/components/Spinner"
 
 const GuestbookWrapper = styled.div`
   background-color: rgba(255, 255, 255, 0.1);
@@ -42,7 +43,7 @@ const Subtitle = styled.p`
   padding: 0;
   margin: 0;
 `
-const InputWrapper = styled.div`
+const InputWrapper = styled.form`
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -59,10 +60,11 @@ const InputMessage = styled.input.attrs({ type: "text" })`
   }
 `
 const SubmitMessage = styled.button`
-  height: 2em;
-  border: none;
-  padding: 0 12px;
+  border-color: transparent;
   border-radius: 10px;
+  width: 2em;
+  background-color: #df34c2;
+  width: 8em;
 `
 
 const GuestBookPage: NextPage = ({ fallbackdata }: any) => {
@@ -115,19 +117,18 @@ const GuestBookPage: NextPage = ({ fallbackdata }: any) => {
           <Subtitle>
             Your information is only used to display your name
           </Subtitle>
-          <InputWrapper>
-            <form onSubmit={submitEntry}>
-              <InputMessage
-                ref={inputEl}
-                placeholder="Test Message..."
-                type="text"
-              />
-              <SubmitMessage
-                disabled={form.state === Form.LOADING ? true : false}
-              >
-                {form.state === Form.LOADING ? "Spinner" : "Submit"}
-              </SubmitMessage>
-            </form>
+          <InputWrapper onSubmit={submitEntry}>
+            <InputMessage
+              ref={inputEl}
+              placeholder="Test Message..."
+              type="text"
+              required={true}
+            />
+            <SubmitMessage
+              disabled={form.state === Form.LOADING ? true : false}
+            >
+              {form.state === Form.LOADING ? <Spinner /> : "Submit"}
+            </SubmitMessage>
           </InputWrapper>
         </GuestbookWrapper>
       )}

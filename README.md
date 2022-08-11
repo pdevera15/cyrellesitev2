@@ -12,3 +12,11 @@ I want to add blog function where i can write my journey on being full-stack web
 ## Inspiration
 
 The website is inspired by [catnose](https://catnose.me).
+
+## Manual
+
+Run DB
+pscale connect cyrelleblog main --port 3306
+
+Run Prisma client
+npx prisma studio
