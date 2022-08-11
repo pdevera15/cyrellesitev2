@@ -6,6 +6,7 @@ import styled from "styled-components"
 import GuestBook from "../../src/components/GuestBook"
 import prisma from "../../lib/prisma"
 import { FormState, Form } from "../../src/lib/types"
+import { useSWRConfig as useSWR } from "swr"
 
 const GuestbookWrapper = styled.div`
   background-color: rgba(255, 255, 255, 0.1);
@@ -65,10 +66,11 @@ const SubmitMessage = styled.button`
 `
 
 const GuestBookPage: NextPage = ({ fallbackdata }: any) => {
+  const { mutate } = useSWR()
   const inputEl = useRef<null | HTMLInputElement>(null)
   const [form, setForm] = useState<FormState>({ state: Form.INITIAL })
 
-  const submitEntry = async (event: React.MouseEvent) => {
+  const submitEntry = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     setForm({ state: Form.LOADING })
     const res = await fetch("/api/guestbook", {
@@ -85,6 +87,7 @@ const GuestBookPage: NextPage = ({ fallbackdata }: any) => {
       return
     }
 
+    mutate("/api/guestbook")
     inputEl.current.value = ""
     setForm({
       state: Form.SUCCESS,
@@ -113,7 +116,7 @@ const GuestBookPage: NextPage = ({ fallbackdata }: any) => {
             Your information is only used to display your name
           </Subtitle>
           <InputWrapper>
-            <form onSubmit={(event: React.MouseEvent) => submitEntry(event)}>
+            <form onSubmit={submitEntry}>
               <InputMessage
                 ref={inputEl}
                 placeholder="Test Message..."
