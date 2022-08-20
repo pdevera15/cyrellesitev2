@@ -89,7 +89,7 @@ const GuestBookPage: NextPage = ({ fallbackdata }: any) => {
       return
     }
 
-    mutate("/api/guestbook")
+    mutate("/api/guestbook", fallbackdata)
     inputEl.current.value = ""
     setForm({
       state: Form.SUCCESS,
