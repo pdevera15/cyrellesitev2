@@ -4,6 +4,7 @@ import prisma from "../../../lib/prisma"
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === "GET") {
+    console.log("request gesutbook api")
     const entries = await prisma.guestbook.findMany({
       orderBy: {
         updated_at: "desc",
@@ -14,6 +15,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       entries.map((entry: any) => ({
         id: entry.id.toString(),
         body: entry.body,
+        created_by: entry.created_by.toString(),
+        updated_at: entry.updated_at.toString(),
       }))
     )
   }

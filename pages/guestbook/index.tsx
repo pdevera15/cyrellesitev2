@@ -6,8 +6,7 @@ import styled from "styled-components"
 import GuestBook from "../../src/components/GuestBook"
 import prisma from "../../lib/prisma"
 import { FormState, Form } from "../../src/lib/types"
-import { useSWRConfig as useSWR } from "swr"
-import Spinner from "../../src/components/Spinner"
+import useSWR, { useSWRConfig } from "swr"
 
 const GuestbookWrapper = styled.div`
   background-color: rgba(255, 255, 255, 0.1);
@@ -67,73 +66,10 @@ const SubmitMessage = styled.button`
   width: 8em;
 `
 
-const GuestBookPage: NextPage = ({ fallbackdata }: any) => {
-  const { mutate } = useSWR()
-  const inputEl = useRef<null | HTMLInputElement>(null)
-  const [form, setForm] = useState<FormState>({ state: Form.INITIAL })
-
-  const submitEntry = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
-    setForm({ state: Form.LOADING })
-    const res = await fetch("/api/guestbook", {
-      body: JSON.stringify({ body: inputEl?.current?.value }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-      method: "POST",
-    })
-
-    const { error } = await res.json()
-    if (error) {
-      setForm({ state: Form.ERROR, message: error })
-      return
-    }
-
-    mutate("/api/guestbook", fallbackdata)
-    inputEl.current.value = ""
-    setForm({
-      state: Form.SUCCESS,
-      message: "Thank you for signing my guestbook!",
-    })
-  }
-  const { data, status } = useSession()
-  console.log(data, status, fallbackdata)
+const GuestBookPage: NextPage = ({ fallbackData }: any) => {
   return (
-    <Layout
-      title="My github timeline"
-      subtitle="Leave some comment. Surprise me!"
-    >
-      {status !== "authenticated" ? (
-        <GuestbookWrapper>
-          <Head>Sign in using Github </Head>
-          <Button onClick={() => signIn("github")}>Sign in</Button>
-          <Subtitle>
-            Your information is only used to display your name
-          </Subtitle>
-        </GuestbookWrapper>
-      ) : (
-        <GuestbookWrapper>
-          <Head>Share a message to my future visitor.</Head>
-          <Subtitle>
-            Your information is only used to display your name
-          </Subtitle>
-          <InputWrapper onSubmit={submitEntry}>
-            <InputMessage
-              ref={inputEl}
-              placeholder="Test Message..."
-              type="text"
-              required={true}
-            />
-            <SubmitMessage
-              disabled={form.state === Form.LOADING ? true : false}
-            >
-              {form.state === Form.LOADING ? <Spinner /> : "Submit"}
-            </SubmitMessage>
-          </InputWrapper>
-        </GuestbookWrapper>
-      )}
-
-      <GuestBook entries={fallbackdata}></GuestBook>
+    <Layout title="My Guestbook" subtitle="Leave some comment. Surprise me!">
+      <GuestBook fallbackData={fallbackData}></GuestBook>
     </Layout>
   )
 }
@@ -145,7 +81,7 @@ export const getStaticProps: GetStaticProps = async () => {
     },
   })
 
-  const fallbackdata = entries?.map((entry) => ({
+  const fallbackData = entries?.map((entry) => ({
     id: entry.id.toString(),
     body: entry.body,
     created_by: entry.created_by.toString(),
@@ -154,7 +90,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
   return {
     props: {
-      fallbackdata,
+      fallbackData,
     },
     revalidate: 60,
   }
