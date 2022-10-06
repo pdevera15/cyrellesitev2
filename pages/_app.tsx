@@ -4,6 +4,7 @@ import { Normalize } from "styled-normalize"
 import GlobalStyle from "../styles/GlobalStyle"
 import styled from "styled-components"
 import Head from "next/head"
+import { SessionProvider } from "next-auth/react"
 
 const Wrapper = styled.div`
   max-width: 780px;
@@ -17,19 +18,21 @@ const Content = styled.div`
   flex-grow: 1;
 `
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   return (
-    <Wrapper>
-      <Head>
-        <title>cyrelle works</title>
-      </Head>
-      <Normalize />
-      <GlobalStyle />
-      <Content>
-        <Component {...pageProps} />
-      </Content>
-      <Footer />
-    </Wrapper>
+    <SessionProvider session={session}>
+      <Wrapper>
+        <Head>
+          <title>cyrelle works</title>
+        </Head>
+        <Normalize />
+        <GlobalStyle />
+        <Content>
+          <Component {...pageProps} />
+        </Content>
+        <Footer />
+      </Wrapper>
+    </SessionProvider>
   )
 }
 export default MyApp

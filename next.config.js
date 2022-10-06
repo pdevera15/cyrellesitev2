@@ -7,12 +7,6 @@ const nextConfig = {
   serverRuntimeConfig: {
     PROJECT_ROOT: __dirname,
   },
-  env: {
-    SERVER:
-      process.env.NODE_ENV === "development"
-        ? "http://localhost:3000"
-        : "http://cyrellesitev2.vercel.app",
-  },
   images: {
     domains: ["avatars.githubusercontent.com"],
   },

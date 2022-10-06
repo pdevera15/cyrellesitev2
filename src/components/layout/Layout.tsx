@@ -34,7 +34,7 @@ const Layout = ({
 }: {
   title?: string
   subtitle?: string
-  children?: JSX.Element | JSX.Element[]
+  children?: JSX.Element | JSX.Element[] | false
 }) => {
   return (
     <>
