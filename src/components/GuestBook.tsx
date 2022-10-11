@@ -36,10 +36,14 @@ const Head = styled.p`
   font-size: 1.5em;
 `
 
-const Subtitle = styled.p`
+interface ISubmit {
+  state?: "success" | "failed"
+}
+const Subtitle = styled.p<ISubmit>`
   background-color: transparent;
   padding: 0;
   margin: 0;
+  ${(props) => props.state === "success" && "color: green"};
 `
 const InputWrapper = styled.form`
   display: flex;
@@ -117,42 +121,57 @@ export default function Guestbook({ fallbackData }: any) {
     })
 
     const { error } = await res.json()
+    console.log(res)
     if (error) {
       setForm({ state: Form.ERROR, message: error })
       return
     }
 
     inputEl.current.value = ""
-    mutate("/api/guestbook")
+    mutate("api/guestbook")
     setForm({
       state: Form.SUCCESS,
       message: "Thank you for signing my guestbook!",
     })
   }
 
-  return status !== "authenticated" ? (
-    <GuestbookWrapper>
-      <Head>Sign in using Github </Head>
-      <Button onClick={() => signIn("github")}>Sign in</Button>
-      <Subtitle>Your information is only used to display your name</Subtitle>
-    </GuestbookWrapper>
-  ) : (
+  return (
     <>
-      <GuestbookWrapper>
-        <Head>Share a message to my future visitor.</Head>
-        <Subtitle>Your information is only used to display your name</Subtitle>
-        <InputWrapper onSubmit={submitEntry}>
-          <InputMessage
-            ref={inputEl}
-            placeholder="Test Message..."
-            type="text"
-            required={true}
-          />
-          <SubmitMessage disabled={form.state === Form.LOADING ? true : false}>
-            {form.state === Form.LOADING ? <Spinner /> : "Submit"}
-          </SubmitMessage>
-        </InputWrapper>
-      </GuestbookWrapper>
+      {status !== "authenticated" ? (
+        <GuestbookWrapper>
+          <Head>Sign in using Github </Head>
+          <Button onClick={() => signIn("github")}>Sign in</Button>
+          <Subtitle>
+            Your information is only used to display your name
+          </Subtitle>
+        </GuestbookWrapper>
+      ) : (
+        <>
+          <GuestbookWrapper>
+            <Head>Share a message to my future visitor.</Head>
+            <Subtitle>
+              Your information is only used to display your name
+            </Subtitle>
+            {form.state === Form.SUCCESS && (
+              <Subtitle state={"success"}>{form.message}</Subtitle>
+            )}
+            <InputWrapper onSubmit={submitEntry}>
+              <InputMessage
+                ref={inputEl}
+                placeholder="Test Message..."
+                type="text"
+                required={true}
+                disabled={form.state === Form.LOADING ? true : false}
+              />
+              <SubmitMessage
+                disabled={form.state === Form.LOADING ? true : false}
+              >
+                {form.state === Form.LOADING ? <Spinner /> : "Submit"}
+              </SubmitMessage>
+            </InputWrapper>
+          </GuestbookWrapper>
+        </>
+      )}
       <Wrapper>
         <Suspense fallback={null}>
           {entries &&
