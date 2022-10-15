@@ -7,6 +7,7 @@ import { useSession, signIn } from "next-auth/react"
 import Spinner from "../../src/components/Spinner"
 import { MdDeleteOutline } from "react-icons/md"
 import { IconContext } from "react-icons"
+import { format } from "date-fns"
 
 const GuestbookWrapper = styled.div`
   background-color: rgba(255, 255, 255, 0.1);
@@ -181,7 +182,11 @@ export default function Guestbook({ fallbackData }: any) {
                 <Comment>
                   <BodyText>{entry.body}</BodyText>
                   <Details>
-                    {entry.created_by} / {entry.updated_at}
+                    {entry.created_by} /{" "}
+                    {format(
+                      new Date(entry.updated_at),
+                      "d MMM yyyy 'at' h:mm bb"
+                    )}
                   </Details>
                 </Comment>
                 {session && session.user.name === entry.created_by && (
