@@ -5,7 +5,8 @@ import fetcher from "../../src/lib/fetcher"
 import { FormState, Form } from "../../src/lib/types"
 import { useSession, signIn } from "next-auth/react"
 import Spinner from "../../src/components/Spinner"
-import { GrClose } from "react-icons/gr"
+import { MdDeleteOutline } from "react-icons/md"
+import { IconContext } from "react-icons"
 
 const GuestbookWrapper = styled.div`
   background-color: rgba(255, 255, 255, 0.1);
@@ -184,7 +185,11 @@ export default function Guestbook({ fallbackData }: any) {
                   </Details>
                 </Comment>
                 {session && session.user.name === entry.created_by && (
-                  <GrClose onClick={() => deleteEntry(entry.id)} />
+                  <IconContext.Provider
+                    value={{ style: { color: "white", cursor: "pointer" } }}
+                  >
+                    <MdDeleteOutline onClick={() => deleteEntry(entry.id)} />
+                  </IconContext.Provider>
                 )}
               </CommentWrapper>
             ))}
