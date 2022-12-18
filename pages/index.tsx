@@ -31,6 +31,7 @@ const Home: NextPage = () => {
         <Menu
           title="Projects"
           subtitle="Simple projects I worked this virus-years"
+          active={false}
         />
         <Menu title="Bio" subtitle="All about me" />
         <Menu title="Blog" subtitle="About anything!" />
