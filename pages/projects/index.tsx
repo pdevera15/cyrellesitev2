@@ -23,7 +23,7 @@ const Projects: NextPage<IProjects> = ({ projects }) => {
             title={project.title}
             subtitle={project.subtitle}
             link={project.link}
-            imgsrc={`${process.env.SERVER}/image/${project.imgsrc}`}
+            imgsrc={`/image/${project.imgsrc}`}
           />
         ))}
       </FlatcardWrapper>
