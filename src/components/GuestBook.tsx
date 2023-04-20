@@ -93,10 +93,12 @@ const CommentWrapper = styled.div`
 const BodyText = styled.div`
   text-align: justify;
 `
+
 const Details = styled.div`
   color: rgba(255, 255, 255, 0.4);
   font-size: small;
 `
+
 export default function Guestbook({ fallbackData }: any) {
   const { status, data: session } = useSession()
   const { mutate } = useSWRConfig()
@@ -105,12 +107,14 @@ export default function Guestbook({ fallbackData }: any) {
   const { data: entries }: any = useSWR("api/guestbook", fetcher, {
     fallbackData,
   })
+
   const deleteEntry = async (id: number) => {
     await fetch(`api/guestbook/${id}`, {
       method: "DELETE",
     })
     mutate("api/guestbook")
   }
+
   const submitEntry = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     setForm({ state: Form.LOADING })
@@ -123,18 +127,17 @@ export default function Guestbook({ fallbackData }: any) {
     })
 
     const { error } = await res.json()
-    console.log(res)
     if (error) {
       setForm({ state: Form.ERROR, message: error })
       return
     }
 
     inputEl.current.value = ""
-    mutate("api/guestbook")
     setForm({
       state: Form.SUCCESS,
       message: "Thank you for signing my guestbook!",
     })
+    mutate("api/guestbook")
   }
 
   return (

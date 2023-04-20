@@ -1,37 +1,48 @@
-export interface Github {
-  title: string
-  description: string
-  link: Link[]
-  image: string
-  category: any[]
-  items: Item[]
+interface Actor {
+  id: number
+  login: string
+  display_login: string
+  gravatar_id: string
+  url: string
+  avatar_url: string
 }
 
-interface Item {
-  id: string
-  title: string
-  link: string
-  author: string
-  published: number
-  created: number
-  category: any[]
-  content: string
-  enclosures: Enclosure[]
-  media: Media
-}
-
-interface Media {
-  thumbnail: Enclosure
-}
-
-interface Enclosure {
-  height: string
-  width: string
+interface Repo {
+  id: number
+  name: string
   url: string
 }
 
-interface Link {
+interface Author {
+  email: string
+  name: string
+}
+
+interface Commit {
+  sha: string
+  author: Author
+  message: string
+  distinct: boolean
+  url: string
+}
+
+interface Payload {
+  repository_id: number
+  push_id: number
+  size: number
+  distinct_size: number
+  ref: string
+  head: string
+  before: string
+  commits: Commit[]
+}
+
+export interface Event {
+  id: string
   type: string
-  rel: string
-  href: string
+  actor: Actor
+  repo: Repo
+  payload: Payload
+  public: boolean
+  created_at: string
 }

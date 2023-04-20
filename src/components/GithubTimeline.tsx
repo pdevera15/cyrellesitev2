@@ -1,11 +1,24 @@
 import Image from "next/image"
 import Link from "next/link"
-import React, { Key } from "react"
+import React from "react"
 import styled from "styled-components"
 
-import { decode } from "html-entities"
 const GithubTimeline = ({ year, events }: { year?: string; events: any }) => {
-  console.log(events)
+  const eventTypeHandler = (event: any) => {
+    switch (event.type) {
+      case "PushEvent":
+        return `Pushed to ${event.repo.name}`
+      case "CreateEvent":
+        if (event.payload.ref_type === "branch") {
+          return `Created new branch: ${event.payload.ref} of ${event.repo.name}`
+        } else if (event.payload.ref_type === "repository") {
+          return `Created new repository ${event.repo.name}`
+        }
+      case "WatchEvent":
+        return `Starred Repo ${event.repo.name}`
+    }
+  }
+
   return (
     <>
       <YearHeader>{year}</YearHeader>
@@ -14,7 +27,7 @@ const GithubTimeline = ({ year, events }: { year?: string; events: any }) => {
           <TimelineIconContainer>
             <TimelineIcon>
               <Image
-                src={events.media.thumbnail.url}
+                src={events.actor.avatar_url}
                 height={30}
                 width={30}
                 alt="profilePicture"
@@ -22,20 +35,21 @@ const GithubTimeline = ({ year, events }: { year?: string; events: any }) => {
             </TimelineIcon>
           </TimelineIconContainer>
           <TimelineContent>
-            <Link href={events.link}>
-              <a target="_BLANK">{events.title}</a>
+            <Link href={events.repo.url}>
+              <a target="_BLANK">{eventTypeHandler(events)}</a>
             </Link>
           </TimelineContent>
-          {events.content && (
-            <Card>
-              {decode(events.content)}
-              {events.author && (
-                <DateWrapper>
-                  {new Date(events.published).toLocaleString("jp-JP")}
-                </DateWrapper>
-              )}
-            </Card>
-          )}
+
+          <Card>
+            {events.payload &&
+              events.payload.commits &&
+              events.payload.commits[0] &&
+              events.payload.commits[0].message}
+            {events.payload && events.payload.description}
+            <DateWrapper>
+              {new Date(events.created_at).toLocaleString("jp-JP")}
+            </DateWrapper>
+          </Card>
         </TimelineRow>
         {/* {events.map((data: any, index: Key) => {
           return (

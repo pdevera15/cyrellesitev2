@@ -4,7 +4,6 @@ import prisma from "../../../lib/prisma"
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === "GET") {
-    console.log("request gesutbook api")
     const entries = await prisma.guestbook.findMany({
       orderBy: {
         updated_at: "desc",
@@ -28,7 +27,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const { email, name } = session?.user
 
   if (req.method === "POST") {
-    console.log("POST")
     const newEntry = await prisma.guestbook.create({
       data: {
         email,

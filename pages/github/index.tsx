@@ -1,23 +1,26 @@
 import Layout from "../../src/components/layout/Layout"
 import { GetStaticProps } from "next/types"
 import { parse } from "rss-to-json"
-import { Github as IGithub } from "../../src/interfaces/Github"
+import { Event as IGithub } from "../../src/interfaces/Github"
 import GithubTimeline from "../../src/components/GithubTimeline"
 
 const Github = ({ data }: { data: IGithub }) => {
+  console.log(data)
   return (
-    <Layout title="My github timeline" subtitle={data.title}>
-      {data.items.map((x, index) => (
+    <Layout title="My github timeline">
+      {data.map((x, index) => (
         <GithubTimeline key={index} events={x} />
       ))}
     </Layout>
   )
 }
 
-export const getStaticProps: GetStaticProps = async (ctx) => {
-  const res = await parse("https://github.com/pdevera15.atom", {})
+export const getStaticProps: GetStaticProps = async () => {
+  const response = await fetch("https://api.github.com/users/pdevera15/events")
+  const data = await response.json()
+  console.log(data)
   return {
-    props: { data: JSON.parse(JSON.stringify(res)) },
+    props: { data },
   }
 }
 
