@@ -1,6 +1,5 @@
 import Layout from "../../src/components/layout/Layout"
 import { GetStaticProps } from "next/types"
-import { parse } from "rss-to-json"
 import { Event as IGithub } from "../../src/interfaces/Github"
 import GithubTimeline from "../../src/components/GithubTimeline"
 
